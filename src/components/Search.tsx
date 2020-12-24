@@ -1,16 +1,17 @@
 import {
-  Button,
-  Progress,
-  Text,
-  VStack,
-  Box,
+    Box,
+    Button,
+    Progress,
+    Stat,
+    StatLabel,
+    StatNumber
 } from "@chakra-ui/react";
-import { Dispatch } from "react";
+import React, { Dispatch } from "react";
 import { Action, State } from "./MainPage";
 
 const Search = (props: { state: State; dispatch: Dispatch<Action> }) => {
   return (
-    <VStack spacing={2} align="stretch">
+    <Box borderWidth="1px" p="4" bg="LightGreen">
       <Button
         disabled={props.state.runningActivity === "search"}
         onClick={() =>
@@ -26,8 +27,11 @@ const Search = (props: { state: State; dispatch: Dispatch<Action> }) => {
           props.state.runningActivity === "search" ? "green" : "gray"
         }
       />
-      <Text fontSize="3xl">Ingredients: {props.state.search.ingredients}</Text>
-    </VStack>
+      <Stat>
+        <StatLabel>Ingredients</StatLabel>
+        <StatNumber>{props.state.search.ingredients}</StatNumber>
+      </Stat>
+    </Box>
   );
 };
 

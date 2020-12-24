@@ -1,10 +1,10 @@
-import { Button, Progress, VStack, Text } from "@chakra-ui/react";
-import { Dispatch } from "react";
+import { Box, Button, Progress, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
+import React, { Dispatch } from "react";
 import { Action, State } from "./MainPage";
 
 const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
   return (
-    <VStack spacing={2} align="stretch">
+    <Box borderWidth="1px" p="4" bg="LightSkyBlue">
       <Button
         disabled={
           props.state.runningActivity === "experiment" ||
@@ -23,8 +23,11 @@ const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
           props.state.runningActivity === "experiment" ? "green" : "gray"
         }
       />
-      <Text fontSize="3xl">knowledge: {props.state.experiment.knowledge}</Text>
-    </VStack>
+      <Stat>
+        <StatLabel>Knowledge</StatLabel>
+        <StatNumber>{props.state.experiment.knowledge}</StatNumber>
+      </Stat>
+    </Box>
   );
 };
 

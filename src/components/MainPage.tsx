@@ -1,5 +1,8 @@
-import { Grid, GridItem } from "@chakra-ui/react";
-import React, { useEffect, useReducer } from "react";
+import { Box, HStack } from "@chakra-ui/react";
+import React, {
+    useEffect,
+    useReducer
+} from "react";
 import Experiment from "./Experiment";
 import Search from "./Search";
 
@@ -142,20 +145,20 @@ const MainPage = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      dispatch({ type: 'tick' })
+      dispatch({ type: "tick" });
     }, 100);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-      <GridItem bg="tomato">
+    <HStack spacing={5} p="10">
+      <Box minW="300px">
         <Search state={state} dispatch={dispatch} />
-      </GridItem>
-      <GridItem bg="papayawhip">
+      </Box>
+      <Box minW="300px">
         <Experiment state={state} dispatch={dispatch} />
-      </GridItem>
-    </Grid>
+      </Box>
+    </HStack>
   );
 };
 
