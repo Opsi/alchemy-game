@@ -1,6 +1,7 @@
 import { Box, Button, Progress, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
 import React, { Dispatch } from "react";
-import { Action, State } from "./MainPage";
+import { Action } from "../ts/reducer";
+import { State } from "../ts/state";
 
 const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
   return (

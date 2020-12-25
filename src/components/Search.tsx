@@ -7,7 +7,8 @@ import {
     StatNumber
 } from "@chakra-ui/react";
 import React, { Dispatch } from "react";
-import { Action, State } from "./MainPage";
+import { Action } from "../ts/reducer";
+import { State } from "../ts/state";
 
 const Search = (props: { state: State; dispatch: Dispatch<Action> }) => {
   return (

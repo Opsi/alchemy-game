@@ -86,12 +86,18 @@
 - total.knowledge > 4: See Skills-Box (with two potion-recipes)
 - total.skills > 0: See "Learned" Skills Tab
 - total.skills > 0 && runningActivity == 'none': "Auto Search"-Skill becomes learnable
-- total.knownPotionRecipes > 0: See Brew-Box (each Potion with its own progressbar)
+- total.knownPotionRecipes > 0:
+  - See Brew-Box (each Potion with its own progressbar)
+  - Add Brew-Queue (size 3)
+  - Costs of Potions will be paid when it is put in the queue
 - total.brewedPotions > 0: See Drink-Box
 - total.drankPotions > 0: See Effects-Box (in Drink Box)
 - total.brewedPotions > 9: "Sell Potions"-Skill becomes learnable
 - learnedSkill.sellPotions: See Sell-Box (Table with randomized orders)
-- total.earnedGold > 0: See Buy-Tab in the Sell-Box
+- total.earnedGold > 0:
+  - Skill-Box becomes "Skills and Equipment"-Box
+  - "Learned-Tab" becomes "Learned and Bought"-Tab
+  - "Item-Skills" become learnable
 - boughtItem.livingRatTrap: See Rats-Box with caught rats amount
 - total.caughtRats > 0: See convert-to-ingredients button (with ingredients amount)
 - total.caughtRats > 0 && learnedSkill.lovePotion && learnedSkill.intelligencePotion: "Tame Rats"-Skill becomes learnable
@@ -101,11 +107,25 @@
   - "Train Rat-Gatherer" becomes learnable
 - learnedSkill.trainRatGatherer: 
   - See Train-Tab in Rats-Box
+  - Has Training-Queue (size 3)
   - See "Train Rat-Collector" in Train-Tab (with progress)
 - total.trainedRats.collector > 0: See Boost in Search-Box
 - total.trainedRats.collector > 9: "Train Rat-Quack" becomes learnable
 - learnedSkill.trainRatQuack: See "Train Rat-Quack" in Train-Tab (with progress)
-- **Repeat for alchemist, breederPair, trainer**
+- total.trainedRats.quack > 0:
+  - See "Order Quack Experiment"-Button in Experiment-Box (with costs)
+  - Own Progressbar for those
+- total.trainedRats.quack > 9:
+  - "Train Rat-Breeder" becomes learnable
+  - "Train Rat-Alchemist" becomes learnable
+- learnedSkill.trainRatBreeder: See "Train Rat-Breeder" in Train-Tab (with progress)
+- learnedSkill.trainRatAlchemist: See "Train Rat-Alchemist" in Train-Tab (with progress)
+- total.trainedRats.breeder > 0: See Boost in Rats-Box
+- total.trainedRats.alchemist > 0:
+  - Rats will Brew Potions in Brew-Queue (boost brewing if player is brewing as well)
+- total.trainedRats > 100 (?): See "Train Rat-Trainer" in Train-Tab (with progress)
+- - total.trainedRats.trainer > 0:
+  - Rats will train Rats in Training-Queue (boost training if player is training as well)
 
 # Rats
 
