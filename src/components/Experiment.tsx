@@ -1,34 +1,80 @@
-import { Box, Button, Progress, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
+import { CalendarIcon } from "@chakra-ui/icons";
+import {
+  Button,
+  Grid,
+  GridItem,
+  Progress,
+  Stat,
+  StatLabel,
+  StatNumber,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import React, { Dispatch } from "react";
 import { Action } from "../ts/reducer";
 import { State } from "../ts/state";
 
 const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
+  const { state, dispatch } = props;
+  const warning =
+    state.runningActivity === "experiment" &&
+    state.experiment.plannedExperiments === 0;
+
   return (
-    <Box borderWidth="1px" p="4" bg="LightSkyBlue">
-      <Button
-        disabled={
-          props.state.runningActivity === "experiment" ||
-          props.state.experiment.blocked
-        }
-        onClick={() =>
-          props.dispatch({ type: "changeActivity", activity: "experiment" })
-        }
+    <VStack borderWidth="1px" p="4" bg="LightSkyBlue" alignContent="center">
+      <Grid
+        templateRows="repeat(2, 4fr)"
+        templateColumns="repeat(2, 1fr)"
+        gap={2}
       >
-        Experiment
-      </Button>
-      <Progress
-        max={props.state.experiment.neededProgress}
-        value={props.state.experiment.progress}
-        colorScheme={
-          props.state.runningActivity === "experiment" ? "green" : "gray"
-        }
-      />
+        <GridItem rowSpan={2}>
+          <Button
+            colorScheme={warning ? "red" : undefined}
+            disabled={state.runningActivity === "experiment"}
+            onClick={() =>
+              dispatch({ type: "changeActivity", activity: "experiment" })
+            }
+          >
+            Experiment
+          </Button>
+        </GridItem>
+        <GridItem rowSpan={2}>
+          <Progress
+            max={state.experiment.neededProgress}
+            value={state.experiment.progress}
+            colorScheme={
+              state.runningActivity === "experiment" ? "blue" : "gray"
+            }
+          />
+        </GridItem>
+        <GridItem rowSpan={2}>
+          <Button
+            leftIcon={<CalendarIcon />}
+            disabled={
+              state.search.ingredients <
+              state.experiment.ingredientsPerExperiment
+            }
+            onClick={() => dispatch({ type: "planExperiment" })}
+          >
+            Schedule
+          </Button>
+        </GridItem>
+        <GridItem className="GridItem">
+          <Text>
+            Cost: {state.experiment.ingredientsPerExperiment} Ingredients
+          </Text>
+        </GridItem>
+        <GridItem className="GridItem">
+          <Text>
+            Scheduled: {state.experiment.plannedExperiments} Experiments
+          </Text>
+        </GridItem>
+      </Grid>
       <Stat>
         <StatLabel>Knowledge</StatLabel>
         <StatNumber>{props.state.experiment.knowledge}</StatNumber>
       </Stat>
-    </Box>
+    </VStack>
   );
 };
 

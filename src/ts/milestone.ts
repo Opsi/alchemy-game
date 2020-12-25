@@ -1,7 +1,5 @@
 export interface TotalState {
   ticks: number;
-  ingredients: number;
-  knowledge: number;
   skills: number;
   potionRecipes: number;
   brewedPotions: number;
@@ -42,8 +40,6 @@ export const initialMilestoneState: MilestoneState = {
   learnedTrainRatTrainer: false,
   total: {
     ticks: 0,
-    ingredients: 0,
-    knowledge: 0,
     skills: 0,
     potionRecipes: 0,
     brewedPotions: 0,
