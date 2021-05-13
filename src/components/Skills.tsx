@@ -1,7 +1,8 @@
-import { Button, Heading, VStack } from "@chakra-ui/react";
+import { Heading, VStack } from "@chakra-ui/react";
 import React, { Dispatch } from "react";
 import { Action } from "../ts/reducer";
 import { State } from "../ts/state";
+import { Button } from "./common/Button";
 
 const Skills = (props: { state: State; dispatch: Dispatch<Action> }) => {
   const { state, dispatch } = props;
