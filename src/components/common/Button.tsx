@@ -5,6 +5,8 @@ export interface ButtonProps extends ChakraButtonProps {
   label?: string
 }
 
-export const Button: React.FC<ButtonProps> = ({ label, ...props }) => {
-  return <ChakraButton {...props}>{label}</ChakraButton>
+export const Button: React.FC<ButtonProps> = ({ label, children, ...props }) => {
+  return <ChakraButton {...props}>
+    {label !== undefined ? label : children}
+  </ChakraButton>
 }
