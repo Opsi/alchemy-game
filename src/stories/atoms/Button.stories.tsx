@@ -7,7 +7,8 @@ export default {
   title: 'Atoms/Button',
   component: Button,
   argTypes: {
-    backgroundColor: { control: 'color' },
+    bgColor: { control: 'color' },
+    bgColorOnHover: { control: 'color' },
   },
 } as Meta;
 
@@ -25,12 +26,10 @@ Secondary.args = {
 
 export const Large = Template.bind({});
 Large.args = {
-  size: 'large',
   label: 'Button',
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  size: 'small',
   label: 'Button',
 };

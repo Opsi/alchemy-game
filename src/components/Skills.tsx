@@ -14,7 +14,7 @@ const Skills = (props: { state: State; dispatch: Dispatch<Action> }) => {
       <VStack>
         {state.skill.known.map((skill) => (
           <Button
-            id={skill.title}
+            key={skill.title}
             disabled={!skill.affordable(state)}
             onClick={() => dispatch({ type: "completeSkill", skill })}
           >

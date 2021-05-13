@@ -29,7 +29,7 @@ const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
       >
         <GridItem rowSpan={2}>
           <Button
-            colorScheme={warning ? "red" : undefined}
+            warning={warning}
             disabled={state.runningActivity === "experiment"}
             onClick={() =>
               dispatch({ type: "changeActivity", activity: "experiment" })
@@ -49,7 +49,6 @@ const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
         </GridItem>
         <GridItem rowSpan={2}>
           <Button
-            leftIcon={<CalendarIcon />}
             disabled={
               state.search.ingredients <
               state.experiment.ingredientsPerExperiment
