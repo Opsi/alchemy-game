@@ -1,6 +1,5 @@
 import { CalendarIcon } from "@chakra-ui/icons";
 import {
-  Button,
   Grid,
   GridItem,
   Progress,
@@ -13,6 +12,7 @@ import {
 import React, { Dispatch } from "react";
 import { Action } from "../ts/reducer";
 import { State } from "../ts/state";
+import { Button } from "./common/Button";
 
 const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
   const { state, dispatch } = props;

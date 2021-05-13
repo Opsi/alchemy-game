@@ -1,6 +1,5 @@
 import {
   VStack,
-  Button,
   HStack,
   Spinner,
   Stat,
@@ -10,6 +9,7 @@ import {
 import React, { Dispatch } from "react";
 import { Action } from "../ts/reducer";
 import { State } from "../ts/state";
+import { Button } from "./common/Button";
 
 const Search = (props: { state: State; dispatch: Dispatch<Action> }) => {
   const { state, dispatch } = props;
