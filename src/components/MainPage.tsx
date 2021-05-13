@@ -5,9 +5,9 @@ import React, {
 } from "react";
 import { reducer } from "../ts/reducer";
 import { initialState } from "../ts/state";
-import Experiment from "./Experiment";
-import Search from "./Search";
-import Skills from "./Skills";
+import Experiment from "./experiment/Experiment";
+import Search from "./search/Search";
+import Skills from "./skills/Skills";
 
 const MainPage = () => {
   const [state, dispatch] = useReducer(reducer, initialState);

@@ -1,4 +1,4 @@
-import React, { CSSProperties, useState } from "react"
+import React, { CSSProperties } from "react"
 import { useHover } from "./useHover"
 
 export interface ButtonProps {
@@ -29,7 +29,7 @@ export const Button: React.FC<ButtonProps> = ({
     color: '#fff',
     fontSize: '15px',
     cursor: 'pointer',
-    transition: '.3s background',
+    transition: '.1s background',
   }
 
   return <button

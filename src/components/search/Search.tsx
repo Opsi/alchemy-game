@@ -7,16 +7,21 @@ import {
   StatNumber,
 } from "@chakra-ui/react";
 import React, { Dispatch } from "react";
-import { Action } from "../ts/reducer";
-import { State } from "../ts/state";
-import { Button } from "./common/Button";
+import { Action } from "../../ts/reducer";
+import { State } from "../../ts/state";
+import { BorderBox } from "../common/BorderBox";
+import { Button } from "../common/Button";
+import { BORDER_COLOR } from "./colors";
 
 const Search = (props: { state: State; dispatch: Dispatch<Action> }) => {
   const { state, dispatch } = props;
   const speed = state.search.neededProgress / 10;
 
   return (
-    <VStack borderWidth="1px" p="4" bg="LightGreen">
+    <BorderBox
+      borderColor={BORDER_COLOR}
+      color={BORDER_COLOR}
+    >
       <HStack alignItems="flex-start">
         <Button
           disabled={state.runningActivity === "search"}
@@ -34,7 +39,7 @@ const Search = (props: { state: State; dispatch: Dispatch<Action> }) => {
         <StatLabel>Ingredients</StatLabel>
         <StatNumber>{state.search.ingredients}</StatNumber>
       </Stat>
-    </VStack>
+    </BorderBox>
   );
 };
 

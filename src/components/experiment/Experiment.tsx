@@ -1,4 +1,3 @@
-import { CalendarIcon } from "@chakra-ui/icons";
 import {
   Grid,
   GridItem,
@@ -10,9 +9,11 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, { Dispatch } from "react";
-import { Action } from "../ts/reducer";
-import { State } from "../ts/state";
-import { Button } from "./common/Button";
+import { Action } from "../../ts/reducer";
+import { State } from "../../ts/state";
+import { BorderBox } from "../common/BorderBox";
+import { Button } from "../common/Button";
+import { BORDER_COLOR } from "./colors";
 
 const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
   const { state, dispatch } = props;
@@ -21,7 +22,10 @@ const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
     state.experiment.plannedExperiments === 0;
 
   return (
-    <VStack borderWidth="1px" p="4" bg="LightSkyBlue" alignContent="center">
+    <BorderBox
+      borderColor={BORDER_COLOR}
+      color={BORDER_COLOR}
+    >
       <Grid
         templateRows="repeat(2, 4fr)"
         templateColumns="repeat(2, 1fr)"
@@ -73,7 +77,7 @@ const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
         <StatLabel>Knowledge</StatLabel>
         <StatNumber>{props.state.experiment.knowledge}</StatNumber>
       </Stat>
-    </VStack>
+    </BorderBox>
   );
 };
 
