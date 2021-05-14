@@ -6,20 +6,22 @@ import {
   StatLabel,
   StatNumber,
   Text,
-  VStack,
-} from "@chakra-ui/react";
-import React, { Dispatch } from "react";
-import { Action } from "../../ts/reducer";
-import { State } from "../../ts/state";
-import { BorderBox } from "../common/BorderBox";
-import { Button } from "../common/Button";
-import { BORDER_COLOR } from "./colors";
+} from '@chakra-ui/react';
+import React, { Dispatch } from 'react';
+import { Action } from '../../ts/reducer';
+import { State } from '../../ts/state';
+import { BorderBox } from '../common/BorderBox';
+import { Button } from '../common/Button';
+import { BORDER_COLOR } from './colors';
 
-const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
-  const { state, dispatch } = props;
-  const warning =
-    state.runningActivity === "experiment" &&
-    state.experiment.plannedExperiments === 0;
+interface Props {
+  state: State
+  dispatch: Dispatch<Action>
+}
+
+export const Experiment: React.FC<Props> = ({ state, dispatch }) => {
+  const warning = state.runningActivity === 'experiment'
+    && state.experiment.plannedExperiments === 0;
 
   return (
     <BorderBox
@@ -34,10 +36,8 @@ const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
         <GridItem rowSpan={2}>
           <Button
             warning={warning}
-            disabled={state.runningActivity === "experiment"}
-            onClick={() =>
-              dispatch({ type: "changeActivity", activity: "experiment" })
-            }
+            disabled={state.runningActivity === 'experiment'}
+            onClick={() => dispatch({ type: 'changeActivity', activity: 'experiment' })}
           >
             Experiment
           </Button>
@@ -47,38 +47,44 @@ const Experiment = (props: { state: State; dispatch: Dispatch<Action> }) => {
             max={state.experiment.neededProgress}
             value={state.experiment.progress}
             colorScheme={
-              state.runningActivity === "experiment" ? "blue" : "gray"
+              state.runningActivity === 'experiment' ? 'blue' : 'gray'
             }
           />
         </GridItem>
         <GridItem rowSpan={2}>
           <Button
             disabled={
-              state.search.ingredients <
-              state.experiment.ingredientsPerExperiment
+              state.search.ingredients
+              < state.experiment.ingredientsPerExperiment
             }
-            onClick={() => dispatch({ type: "planExperiment" })}
+            onClick={() => dispatch({ type: 'planExperiment' })}
           >
             Schedule
           </Button>
         </GridItem>
         <GridItem className="GridItem">
           <Text>
-            Cost: {state.experiment.ingredientsPerExperiment} Ingredients
+            Cost:
+            {' '}
+            {state.experiment.ingredientsPerExperiment}
+            {' '}
+            Ingredients
           </Text>
         </GridItem>
         <GridItem className="GridItem">
           <Text>
-            Scheduled: {state.experiment.plannedExperiments} Experiments
+            Scheduled:
+            {' '}
+            {state.experiment.plannedExperiments}
+            {' '}
+            Experiments
           </Text>
         </GridItem>
       </Grid>
       <Stat>
         <StatLabel>Knowledge</StatLabel>
-        <StatNumber>{props.state.experiment.knowledge}</StatNumber>
+        <StatNumber>{state.experiment.knowledge}</StatNumber>
       </Stat>
     </BorderBox>
   );
 };
-
-export default Experiment;

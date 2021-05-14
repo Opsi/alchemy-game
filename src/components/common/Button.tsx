@@ -1,20 +1,19 @@
-import React, { CSSProperties } from "react"
-import { useHover } from "./useHover"
+import React, { CSSProperties } from 'react';
+import { useHover } from './useHover';
 
 export interface ButtonProps {
   onClick?: () => void
   disabled?: boolean
   label?: string
-  warning?: boolean
   bgColor?: string
   bgColorOnHover?: string
+  warning?: boolean
 }
 
 export const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
   disabled,
-  warning,
   children,
   bgColor,
   bgColorOnHover,
@@ -30,15 +29,18 @@ export const Button: React.FC<ButtonProps> = ({
     fontSize: '15px',
     cursor: 'pointer',
     transition: '.1s background',
-  }
+  };
 
-  return <button
-    onClick={onClick}
-    onMouseEnter={onMouseEnter}
-    onMouseLeave={onMouseLeave}
-    disabled={disabled}
-    style={style}
-  >
-    {label !== undefined ? label : children}
-  </button>
-}
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      disabled={disabled}
+      style={style}
+    >
+      {label !== undefined ? label : children}
+    </button>
+  );
+};

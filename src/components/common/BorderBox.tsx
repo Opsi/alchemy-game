@@ -1,6 +1,5 @@
-import { color } from "@chakra-ui/styled-system"
-import React from "react"
-import { BACKGROUND_COLOR } from "./colors"
+import React from 'react';
+import { BACKGROUND_COLOR } from './colors';
 
 export interface BorderBoxProps {
   borderColor: string
@@ -13,18 +12,18 @@ export const BorderBox: React.FC<BorderBoxProps> = ({
   bgColor,
   color,
   children,
-}) => {
-  return <div
+}) => (
+  <div
     style={{
-      borderStyle: "solid",
+      borderStyle: 'solid',
       borderRadius: 3,
       padding: 4,
       borderWidth: 2,
-      borderColor: borderColor,
+      borderColor,
       backgroundColor: bgColor ?? BACKGROUND_COLOR,
       color,
     }}
   >
     {children}
   </div>
-}
+);

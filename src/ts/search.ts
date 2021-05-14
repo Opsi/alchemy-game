@@ -1,4 +1,4 @@
-import { ActivityType } from "./state";
+import { ActivityType } from './state';
 
 export interface SearchState {
   ingredients: number;
@@ -17,13 +17,13 @@ export const initialSearchState: SearchState = {
   ingredients: 0,
   progress: 0,
   neededProgress: 10,
-  ingredientChance: .1,
+  ingredientChance: 0.1,
   maxIngredientsPerSearch: 1,
   total: {
     ingredients: 0,
     alchemistIngredients: 0,
     ratIngredients: 0,
-  }
+  },
 };
 
 export function searchTick(state: SearchState, activity: ActivityType): SearchState {
@@ -41,17 +41,17 @@ export function searchTick(state: SearchState, activity: ActivityType): SearchSt
     return {
       ...state,
       progress: 0,
-    };  
+    };
   }
-  const foundIngredients = Math.ceil(state.maxIngredientsPerSearch * Math.random())
+  const foundIngredients = Math.ceil(state.maxIngredientsPerSearch * Math.random());
   return {
-      ...state,
-      ingredients: state.ingredients + foundIngredients,
-      progress: 0,
-      total: {
-        ...state.total,
-        alchemistIngredients: state.total.alchemistIngredients + foundIngredients,
-        ingredients: state.total.ingredients + foundIngredients,
-      }
+    ...state,
+    ingredients: state.ingredients + foundIngredients,
+    progress: 0,
+    total: {
+      ...state.total,
+      alchemistIngredients: state.total.alchemistIngredients + foundIngredients,
+      ingredients: state.total.ingredients + foundIngredients,
+    },
   };
 }

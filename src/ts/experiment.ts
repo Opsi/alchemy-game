@@ -1,4 +1,4 @@
-import { ActivityType } from "./state";
+import { ActivityType } from './state';
 
 export interface ExperimentState {
   active: boolean;
@@ -29,11 +29,11 @@ export const initialExperimentState: ExperimentState = {
     usedIngredients: 0,
     alchemistKnowledge: 0,
     ratKnowledge: 0,
-  }
+  },
 };
 
 export function experimentTick(state: ExperimentState, activity: ActivityType): ExperimentState {
-  if (activity !== 'experiment' || state.plannedExperiments === 0) {
+  if (activity !== 'experiment' || state.plannedExperiments === 0) {
     return state;
   }
   const newProgress = state.progress + 1;
@@ -52,6 +52,6 @@ export function experimentTick(state: ExperimentState, activity: ActivityType): 
       ...state.total,
       knowledge: state.total.knowledge + state.knowledgePerExperiment,
       alchemistKnowledge: state.total.alchemistKnowledge + state.knowledgePerExperiment,
-    }
+    },
   };
 }

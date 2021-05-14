@@ -1,6 +1,7 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { BACKGROUND_COLOR } from "./common/colors";
-import MainPage from "./MainPage";
+import React from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { BACKGROUND_COLOR } from './common/colors';
+import MainPage from './MainPage';
 
 function App() {
   return (

@@ -53,5 +53,5 @@ export const initialMilestoneState: MilestoneState = {
     trainedRatAlchemists: 0,
     trainedRatBreeder: 0,
     trainedRatTrainer: 0,
-  }
-}
+  },
+};

@@ -1,9 +1,9 @@
-import { ExperimentState, initialExperimentState } from "./experiment";
-import { initialMilestoneState, MilestoneState } from "./milestone";
-import { initialSearchState, SearchState } from "./search";
-import { initialSkillState, SkillState } from "./skills";
+import { ExperimentState, initialExperimentState } from './experiment';
+import { initialMilestoneState, MilestoneState } from './milestone';
+import { initialSearchState, SearchState } from './search';
+import { initialSkillState, SkillState } from './skills';
 
-export type ActivityType = "none" | "search" | "experiment";
+export type ActivityType = 'none' | 'search' | 'experiment';
 
 export interface State {
   search: SearchState;
@@ -18,5 +18,5 @@ export const initialState: State = {
   experiment: initialExperimentState,
   skill: initialSkillState,
   milestone: initialMilestoneState,
-  runningActivity: "none",
+  runningActivity: 'none',
 };

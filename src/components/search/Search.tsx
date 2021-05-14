@@ -1,20 +1,23 @@
 import {
-  VStack,
   HStack,
   Spinner,
   Stat,
   StatLabel,
   StatNumber,
-} from "@chakra-ui/react";
-import React, { Dispatch } from "react";
-import { Action } from "../../ts/reducer";
-import { State } from "../../ts/state";
-import { BorderBox } from "../common/BorderBox";
-import { Button } from "../common/Button";
-import { BORDER_COLOR } from "./colors";
+} from '@chakra-ui/react';
+import React, { Dispatch } from 'react';
+import { Action } from '../../ts/reducer';
+import { State } from '../../ts/state';
+import { BorderBox } from '../common/BorderBox';
+import { Button } from '../common/Button';
+import { BORDER_COLOR } from './colors';
 
-const Search = (props: { state: State; dispatch: Dispatch<Action> }) => {
-  const { state, dispatch } = props;
+interface Props {
+  state: State
+  dispatch: Dispatch<Action>
+}
+
+export const Search: React.FC<Props> = ({ state, dispatch }) => {
   const speed = state.search.neededProgress / 10;
 
   return (
@@ -24,14 +27,12 @@ const Search = (props: { state: State; dispatch: Dispatch<Action> }) => {
     >
       <HStack alignItems="flex-start">
         <Button
-          disabled={state.runningActivity === "search"}
-          onClick={() =>
-            dispatch({ type: "changeActivity", activity: "search" })
-          }
+          disabled={state.runningActivity === 'search'}
+          onClick={() => dispatch({ type: 'changeActivity', activity: 'search' })}
         >
           Search
         </Button>
-        {state.runningActivity === "search" && (
+        {state.runningActivity === 'search' && (
           <Spinner size="lg" colorScheme="green" speed={`${speed}s`} />
         )}
       </HStack>
@@ -42,5 +43,3 @@ const Search = (props: { state: State; dispatch: Dispatch<Action> }) => {
     </BorderBox>
   );
 };
-
-export default Search;

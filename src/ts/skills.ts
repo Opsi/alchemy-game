@@ -1,4 +1,4 @@
-import { State } from "./state";
+import { State } from './state';
 
 export interface Skill {
   title: string;
@@ -44,7 +44,7 @@ export const initialSkillState: SkillState = {
   unknown: ALL_SKILLS,
   known: [],
   completed: [],
-}
+};
 
 export function skillTick(state: State): SkillState {
   if (!state.skill.unknown.some((skill) => skill.learnable(state))) {
@@ -56,5 +56,5 @@ export function skillTick(state: State): SkillState {
     ...state.skill,
     unknown: newUnknown,
     known: state.skill.known.concat(newKnown),
-  }
+  };
 }

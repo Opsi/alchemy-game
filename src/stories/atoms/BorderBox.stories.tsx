@@ -13,6 +13,9 @@ const meta: Meta<BorderBoxProps> = {
 
 export default meta;
 
-export const Primary: Story<BorderBoxProps> = (args) => <BorderBox {...args}>
-    <button>Test</button>
-  </BorderBox>;
+export const Primary: Story<BorderBoxProps> = (args) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  <BorderBox {...args}>
+    <button type="button">Test</button>
+  </BorderBox>
+);

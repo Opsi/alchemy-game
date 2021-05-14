@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useCallback, useState } from 'react';
 
 interface UseHover {
   isHovered: boolean
@@ -14,6 +14,6 @@ export const useHover = (): UseHover => {
   return {
     isHovered,
     onMouseEnter,
-    onMouseLeave
-  }
-}
+    onMouseLeave,
+  };
+};
