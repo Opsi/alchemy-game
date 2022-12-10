@@ -24,7 +24,7 @@ const RareIngredients = () => {
 
 export const MainPage: React.FC = () => {
 	return (
-		<div>
+		<div className="text-2xl font-bold underline">
 			<Ingredients />
 			<RareIngredients />
 		</div>
