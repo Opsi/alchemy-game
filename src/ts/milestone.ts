@@ -1,31 +1,31 @@
 export interface TotalState {
-  ticks: number;
-  skills: number;
-  potionRecipes: number;
-  brewedPotions: number;
-  drankPotions: number;
-  soldPotions: number;
-  gold: number;
-  caughtRats: number;
-  tamedRats: number;
-  trainedRatGatherers: number;
-  trainedRatQuacks: number;
-  trainedRatAlchemists: number;
-  trainedRatBreeder: number;
-  trainedRatTrainer: number;
+  ticks: number
+  skills: number
+  potionRecipes: number
+  brewedPotions: number
+  drankPotions: number
+  soldPotions: number
+  gold: number
+  caughtRats: number
+  tamedRats: number
+  trainedRatGatherers: number
+  trainedRatQuacks: number
+  trainedRatAlchemists: number
+  trainedRatBreeder: number
+  trainedRatTrainer: number
 }
 
 export interface MilestoneState {
-  total: TotalState;
-  learnedSellPotions: boolean;
-  learnedAutoSearch: boolean;
-  boughtLiveRatTrap: boolean;
-  learnedTameRats: boolean;
-  learnedTrainRatGatherer: boolean;
-  learnedTrainRatQuack: boolean;
-  learnedTrainRatBreeder: boolean;
-  learnedTrainRatAlchemist: boolean;
-  learnedTrainRatTrainer: boolean;
+  total: TotalState
+  learnedSellPotions: boolean
+  learnedAutoSearch: boolean
+  boughtLiveRatTrap: boolean
+  learnedTameRats: boolean
+  learnedTrainRatGatherer: boolean
+  learnedTrainRatQuack: boolean
+  learnedTrainRatBreeder: boolean
+  learnedTrainRatAlchemist: boolean
+  learnedTrainRatTrainer: boolean
 }
 
 export const initialMilestoneState: MilestoneState = {
@@ -52,6 +52,6 @@ export const initialMilestoneState: MilestoneState = {
     trainedRatQuacks: 0,
     trainedRatAlchemists: 0,
     trainedRatBreeder: 0,
-    trainedRatTrainer: 0,
+    trainedRatTrainer: 0
   }
 }
