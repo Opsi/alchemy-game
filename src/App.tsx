@@ -1,15 +1,15 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import React from "react";
-import { MainPage } from "./MainPage/MainPage";
+import React from 'react'
+import { MainPage } from './MainPage/MainPage'
+import { tick } from './store/store'
 
-export const App: React.FC = () => (
-	<div
-		style={{
-			height: "100vh",
-		}}
-	>
-		<ChakraProvider>
-			<MainPage />
-		</ChakraProvider>
-	</div>
-);
+export const App: React.FC = () => {
+    React.useEffect(() => {
+        const interval = setInterval(tick, 100)
+        return () => clearInterval(interval)
+    })
+    return (
+        <div className="w-screen min-h-screen bg-slate-700">
+            <MainPage />
+        </div>
+    )
+}
