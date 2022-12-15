@@ -11,7 +11,7 @@ export const Gather = () => {
     const onClick = React.useCallback(() => switchActivity(isGathering ? 'idle' : 'gathering'), [isGathering])
 
     return (
-        <div className="p-4 max-w-fit rounded-md border-4 text-lime-200 border-lime-200">
+        <div className="p-4 h-full rounded-md border-4 text-lime-200 border-lime-200">
             <div className="text-4xl text-center mb-5">Forest</div>
             <div className="flex items-center space-x-4">
                 <button
