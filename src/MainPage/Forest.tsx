@@ -18,9 +18,11 @@ export const Forest = () => {
             <ThemeBoxHeader text="Forest" />
             <div className="flex items-center space-x-4">
                 <button
-                    className="
-                        border-2 text-xl rounded-sm px-3 py-2 border-lime-200 w-36 
-                        enabled:hover:bg-white enabled:hover:text-black enabled:hover:border-black"
+                    className={`
+                        text-xl px-3 py-2 w-36
+                        border-2 rounded-sm ${forestTheme.border} 
+                        enabled:hover:bg-white enabled:hover:text-black enabled:hover:border-black
+                    `}
                     onClick={onClick}
                 >
                     {isGathering ? 'Gathering...' : 'Gather'}

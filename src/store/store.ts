@@ -1,47 +1,37 @@
 import create from 'zustand'
+import { alchemistExperiments } from './lab'
+import { AlchemistActivity, NEEDED_PROGRESS, StoreState, TickFunction } from './schema'
 
-export type AlchemistActivity = 'idle' | 'gathering'
+export const ingredientsForNextExperiment = (state: StoreState) => 5 + state.stats.totalPreparedExperiments
 
-const NEEDED_PROGRESS = 100
-
-interface State {
-    activity: AlchemistActivity
-    stats: {
-        totalFoundIngredients: number
-        totalConsumedIngredients: number
-    }
-    gather: {
-        progress: number
-        progressPerTick: number
-        findMin: number
-        findRange: number
-    }
-    resources: {
-        ingredients: number
-    }
-}
-
-export const useStore = create<State>(() => ({
+export const useStore = create<StoreState>(() => ({
     activity: 'idle',
     stats: {
         totalFoundIngredients: 0,
         totalConsumedIngredients: 0,
+        totalPreparedExperiments: 0,
+        totalConductedExperiments: 0,
+        totalGainedKnowledge: 0,
     },
-    gather: {
+    forest: {
         progress: 0,
         progressPerTick: 2,
-        findMin: 0,
+        findMin: 1,
         findRange: 2,
+    },
+    lab: {
+        progress: 0,
+        progressPerTick: 2,
     },
     resources: {
         ingredients: 0,
+        preparedExperiments: 0,
+        knowledge: 0,
     },
 }))
 
-type TickFunction = (state: State) => State
-
 const alchemistGathers: TickFunction = (state) => {
-    const { progress, progressPerTick, findMin, findRange } = state.gather
+    const { progress, progressPerTick, findMin, findRange } = state.forest
     let newProgress = progress + progressPerTick
     const findings = Math.floor(newProgress / NEEDED_PROGRESS)
     newProgress = newProgress - findings * NEEDED_PROGRESS
@@ -52,8 +42,8 @@ const alchemistGathers: TickFunction = (state) => {
     }
     return {
         ...state,
-        gather: {
-            ...state.gather,
+        forest: {
+            ...state.forest,
             progress: newProgress,
         },
         stats: {
@@ -73,7 +63,28 @@ const alchemistActivity: TickFunction = (state) => {
             return state
         case 'gathering':
             return alchemistGathers(state)
+        case 'experimenting':
+            return alchemistExperiments(state)
     }
+}
+
+export const prepareExperiment = () => {
+    const state = useStore.getState()
+    const cost = ingredientsForNextExperiment(state)
+    const ingredients = state.resources.ingredients
+    if (cost > ingredients) return
+    useStore.setState({
+        resources: {
+            ...state.resources,
+            ingredients: state.resources.ingredients - cost,
+            preparedExperiments: state.resources.preparedExperiments + 1,
+        },
+        stats: {
+            ...state.stats,
+            totalConsumedIngredients: state.stats.totalConsumedIngredients + cost,
+            totalPreparedExperiments: state.stats.totalPreparedExperiments + 1,
+        },
+    })
 }
 
 export const switchActivity = (newActivity: AlchemistActivity) => {
