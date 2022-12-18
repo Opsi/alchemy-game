@@ -1,11 +1,12 @@
 import React from 'react'
 import { labTheme } from '../components/colors'
 import { ThemeBox } from '../components/ThemeBox'
+import { ThemeBoxHeader } from '../components/ThemeHeader'
 
 export const Lab: React.FC = () => {
     return (
         <ThemeBox theme={labTheme}>
-            <div className="text-4xl text-left mb-5">Laboratory</div>
+            <ThemeBoxHeader text="Laboratory" />
             <div className="flex space-x-2">
                 <div className="grid grid-cols-1 gap-2">
                     <button

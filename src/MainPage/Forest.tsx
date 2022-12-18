@@ -1,6 +1,7 @@
 import React from 'react'
 import { forestTheme } from '../components/colors'
 import { ThemeBox } from '../components/ThemeBox'
+import { ThemeBoxHeader } from '../components/ThemeHeader'
 import { switchActivity, useStore } from '../store/store'
 
 export const Forest = () => {
@@ -14,7 +15,7 @@ export const Forest = () => {
 
     return (
         <ThemeBox theme={forestTheme}>
-            <div className="text-4xl text-left mb-5">Forest</div>
+            <ThemeBoxHeader text="Forest" />
             <div className="flex items-center space-x-4">
                 <button
                     className="
