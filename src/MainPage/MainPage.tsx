@@ -1,5 +1,5 @@
-import { Experiment } from './Experiment'
-import { Gather } from './Gather'
+import { Lab } from './Lab'
+import { Forest } from './Forest'
 import { Log } from './Log'
 
 export const MainPage: React.FC = () => {
@@ -8,8 +8,8 @@ export const MainPage: React.FC = () => {
             <div className="row-span-2">
                 <Log />
             </div>
-            <Gather />
-            <Experiment />
+            <Forest />
+            <Lab />
         </div>
     )
 }

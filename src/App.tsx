@@ -8,7 +8,7 @@ export const App: React.FC = () => {
         return () => clearInterval(interval)
     })
     return (
-        <div className="w-screen min-h-screen bg-slate-700">
+        <div className="w-screen min-h-screen bg-gradient-to-br from-slate-800 to-gray-700">
             <MainPage />
         </div>
     )
